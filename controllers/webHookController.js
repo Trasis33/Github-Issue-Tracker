@@ -1,13 +1,14 @@
 'use strict'
 
 const webHookController = {}
-
 /**
  * index GET
  */
 webHookController.index = (req, res, next) => res.render('home/index')
 
 webHookController.webhook = async (req, res, next) => {
+  const io = req.app.get('socket.io')
+
   let result = JSON.parse(req.body)
 
   let issues = result.map(issue => ({

@@ -24,7 +24,8 @@
     "express-hbs": "^2.0.2",
     "express-session": "^1.15.6",
     "github-webhook-handler": "^0.7.1",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "node-fetch": "^2.3.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10",

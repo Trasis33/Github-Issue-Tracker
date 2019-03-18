@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('express-hbs')
 const path = require('path')
 const logger = require('morgan')
+const bodyParser = require('body-parser')
 // const createHandler = require('github-webhook-handler')
 
 // const secret = process.env.SECRET
@@ -20,6 +21,10 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(bodyParser.raw({
+  type: 'application/json'
+}))
 
 // app.use(handler.on('issues', function (event) {
 //   console.log('Received an issue event for %s action=%s: #%d %s',

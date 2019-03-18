@@ -8,13 +8,27 @@ const homeController = {}
  * index GET
  */
 homeController.index = async (req, res, next) => {
-  res.render('home/index')
   const result = await fetch('https://api.github.com/repos/1dv023/fl222pw-examination-3/issues', {
     headers: {
       Authorization: 'token ' + process.env.SECRET
     }
   })
-  console.log(await result.json())
+  const data = await result.json()
+  let issues = data.map(issue => ({
+    id: issue.id,
+    title: issue.title,
+    state: issue.state,
+    comments: issue.comments,
+    created_at: issue.created_at,
+    updated_at: issue.updated_at,
+    closed_at: issue.closed_at,
+    body: issue.body
+  }))
+
+  console.log(issues)
+  // console.log(await result.json())
+  // return result
+  res.render('home/index', { issues })
 }
 
 // Exports.

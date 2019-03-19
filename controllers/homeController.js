@@ -1,7 +1,8 @@
 'use strict'
 
 const fetch = require('node-fetch')
-const dotenv = require('dotenv').config()
+const dotenv = require('dotenv')
+dotenv.config()
 const homeController = {}
 
 /**

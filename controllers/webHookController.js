@@ -11,19 +11,23 @@ webHookController.webhook = async (req, res, next) => {
 
   let result = JSON.parse(req.body)
 
-  let issues = result.map(issue => ({
-    id: issue.id,
-    number: issue.number,
-    action: issue.action,
-    title: issue.title,
-    username: issue.issue.user.login,
-    state: issue.state,
-    comments: issue.comments,
-    created_at: issue.created_at,
-    updated_at: issue.updated_at,
-    closed_at: issue.closed_at,
-    body: issue.body
-  }))
+  let issues = {
+    id: result.issue.id,
+    number: result.issue.number,
+    action: result.action,
+    title: result.issue.title,
+    username: result.issue.user.login,
+    state: result.issue.state,
+    comments: result.issue.comments,
+    created_at: result.issue.created_at,
+    updated_at: result.issue.updated_at,
+    closed_at: result.issue.closed_at,
+    body: result.issue.body
+  }
+  console.log(issues)
+
+  // io.emit()
+
   res.sendStatus(200)
 }
 

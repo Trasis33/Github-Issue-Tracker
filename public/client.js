@@ -4,7 +4,8 @@ console.log('hej')
 
 socket.on('newComment', issue => {
   console.log('new comment added')
-  let comments = document.querySelector(`#issue-${issue.id} .comments`)
+  let comments = document.querySelector(`#issue-${issue.id} .issue-comments`)
+  comments.classList.add('new', 'red')
   comments.textContent = `Comments: ${issue.comments + 1}`
 })
 

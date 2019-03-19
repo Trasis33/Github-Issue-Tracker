@@ -24,9 +24,22 @@ webHookController.webhook = async (req, res, next) => {
     closed_at: result.issue.closed_at,
     body: result.issue.body
   }
-  console.log(issues)
+  console.log(result.action)
 
-  // io.emit()
+  switch (result.action) {
+    case 'created':
+      io.emit('newComment', issues)
+      break
+    case 'opened':
+      io.emit('newIssue', issues)
+      break
+    default:
+      console.log('no action')
+  }
+
+  // if (issues.action === 'created') {
+  //   io.emit('newComment', issues)
+  // }
 
   res.sendStatus(200)
 }

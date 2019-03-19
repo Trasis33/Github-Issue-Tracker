@@ -33,6 +33,15 @@ webHookController.webhook = async (req, res, next) => {
     case 'opened':
       io.emit('newIssue', issues)
       break
+    case 'reopened':
+      io.emit('newIssue', issues)
+      break
+    case 'closed':
+      io.emit('closedIssue', issues)
+      break
+    case 'renamed':
+      io.emit('newTitle', issues)
+      break
     default:
       console.log('no action')
   }

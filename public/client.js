@@ -14,12 +14,12 @@ socket.on('newIssue', issue => {
   let issueContainer = document.querySelector('.issue-container')
   let issues = document.querySelector('.issues')
   let issueClone = document.importNode(issues, true)
-  let id = document.querySelector('.issue-id')
-  let title = document.querySelector('.issue-title')
-  let body = document.querySelector('.issue-body')
-  let state = document.querySelector('.issue-state')
-  let comments = document.querySelector('.issue-comments')
-  let url = document.querySelector('.issue-url')
+  let id = issueClone.querySelector('.issue-id')
+  let title = issueClone.querySelector('.issue-title')
+  let body = issueClone.querySelector('.issue-body')
+  let state = issueClone.querySelector('.issue-state')
+  let comments = issueClone.querySelector('.issue-comments')
+  let url = issueClone.querySelector('.issue-url')
 
   id.setAttribute('id', `issue-${issue.id}`)
   title.textContent = issue.title
@@ -28,7 +28,14 @@ socket.on('newIssue', issue => {
   comments.textContent = `Comments: ${issue.comments}`
   url.setAttribute('href', `https://github.com/${issue.url}`)
 
-  issueContainer.insertBefore(issueClone, issueContainer)
+  issueContainer.insertBefore(issueClone, issues)
 
   console.log(issueClone)
+})
+
+socket.on('closedIssue', issue => {
+  let issueContainer = document.querySelector('.issue-container')
+  let id = document.querySelector(`#issue-${issue.id}`)
+  // id.parentNode.parentNode.parentNode.removeChild()
+  issueContainer.removeChild(id.parentNode.parentNode)
 })

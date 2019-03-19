@@ -3,10 +3,9 @@ const socket = window.io.connect()
 console.log('hej')
 
 socket.on('newComment', issue => {
-  // console.log(issue)
   console.log('new comment added')
-  let comments = document.querySelector('.comments')
-  console.log(comments)
+  let comments = document.querySelector(`#issue-${issue.id} .comments`)
+  comments.textContent = `Comments: ${issue.comments + 1}`
 })
 
 socket.on('newIssue', issue => {

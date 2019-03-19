@@ -20,12 +20,11 @@
         <div class="card-action white-text">
           <p class="issue-state">Issue state: {{this.state}}</p>
           <p class="comments right-align issue-comments">Comments: {{this.comments}}</p>
-          <a class="issue-url" href="https://github.com/{{this.url}}">Go to issue</a>
+          <a class="issue-url" href="{{this.url}}">Go to issue</a>
         </div>
       </div>
     </div>
   </div>
-
     {{/each}}
 </div>
     {{/if}}
@@ -34,4 +33,3 @@
 <div class="container">
 <hr />
 </div>
-<!-- /container -->

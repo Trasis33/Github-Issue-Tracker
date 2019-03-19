@@ -26,7 +26,7 @@ socket.on('newIssue', issue => {
   body.textContent = issue.body
   state.textContent = `Issue state: ${issue.state}`
   comments.textContent = `Comments: ${issue.comments}`
-  url.setAttribute('href', `https://github.com/${issue.url}`)
+  url.setAttribute('href', issue.url)
 
   issueContainer.insertBefore(issueClone, issues)
 
@@ -38,4 +38,9 @@ socket.on('closedIssue', issue => {
   let id = document.querySelector(`#issue-${issue.id}`)
   // id.parentNode.parentNode.parentNode.removeChild()
   issueContainer.removeChild(id.parentNode.parentNode)
+})
+
+socket.on('newTitle', issue => {
+  let title = document.querySelector(`#issue-${issue.id} .issue-title`)
+  title.textContent = issue.title
 })

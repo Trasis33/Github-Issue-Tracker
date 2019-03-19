@@ -40,7 +40,7 @@ homeController.index = async (req, res, next) => {
     updated_at: issue.updated_at,
     closed_at: issue.closed_at,
     body: issue.body,
-    url: issue.url.substring(28)
+    url: issue.html_url
   }))
 
   console.log(issues)

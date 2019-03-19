@@ -22,7 +22,8 @@ webHookController.webhook = async (req, res, next) => {
     created_at: result.issue.created_at,
     updated_at: result.issue.updated_at,
     closed_at: result.issue.closed_at,
-    body: result.issue.body
+    body: result.issue.body,
+    url: result.html_url
   }
   console.log(result.action)
 
@@ -39,7 +40,7 @@ webHookController.webhook = async (req, res, next) => {
     case 'closed':
       io.emit('closedIssue', issues)
       break
-    case 'renamed':
+    case 'edited':
       io.emit('newTitle', issues)
       break
     default:

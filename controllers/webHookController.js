@@ -13,7 +13,10 @@ webHookController.webhook = async (req, res, next) => {
 
   let issues = result.map(issue => ({
     id: issue.id,
+    number: issue.number,
+    action: issue.action,
     title: issue.title,
+    username: issue.issue.user.login,
     state: issue.state,
     comments: issue.comments,
     created_at: issue.created_at,

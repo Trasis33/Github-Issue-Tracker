@@ -16,13 +16,15 @@ homeController.index = async (req, res, next) => {
   const data = await result.json()
   let issues = data.map(issue => ({
     id: issue.id,
+    username: issue.user.login,
     title: issue.title,
     state: issue.state,
     comments: issue.comments,
     created_at: issue.created_at,
     updated_at: issue.updated_at,
     closed_at: issue.closed_at,
-    body: issue.body
+    body: issue.body,
+    url: issue.url.substring(28)
   }))
 
   console.log(issues)

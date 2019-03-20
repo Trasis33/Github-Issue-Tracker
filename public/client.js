@@ -50,7 +50,7 @@ socket.on('closedIssue', issue => {
 
 socket.on('newTitle', issue => {
   let title = document.querySelector(`#issue-${issue.id} .issue-title`)
-  let updatedAt = document.querySelector('.updated')
+  let updatedAt = document.querySelector(`#issue-${issue.id} .updated`)
   updatedAt.classList.add('new', 'blue')
   title.textContent = issue.title
 })

@@ -60,3 +60,7 @@ Jag skapade ett certifikat för min domän med hjälp av letsencrypt.org för at
 En .env-variabel är en variabel med värden som man vill hålla utanför applikationen, till exempel känslig data som lösenord eller andra konfigurationer som applikationen ser som konstanta men sedan går att ändra i .env.
 
 Jag använder en env fil med min GitHub Auth Token och en Secret som används för att jämföra med githubs payload för att säkerställa källan.
+
+### Development vs production
+
+I development tillåts mer resurskrävande saker att ske, till exempel i Express compileras views i varje request medan de cachas i production.

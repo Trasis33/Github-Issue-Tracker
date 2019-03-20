@@ -7,6 +7,9 @@
       This is an Express website handling github issues.
     </p>
   </div>
+  <template>
+
+  </template>
     {{#if issues.length}}
     <div class="issue-container">
     {{#each issues}}
@@ -18,7 +21,8 @@
           <p class="issue-body">{{this.body}}</p>
         </div>
         <div class="card-action white-text">
-          <p class="issue-state">Issue state: {{this.state}}</p>
+          <p class="updated-at right-align"><span class="updated white-text badge">Updated at: {{this.updated_at}}, {{this.update_time}}</span></p>
+          <p class="created-at">Created at: {{this.created_at}}, {{this.time}}</p>
           <p class="comments right-align"><span class="issue-comments white-text badge">Comments: {{this.comments}}</span></p>
           <a class="issue-url" href="{{this.url}}">Go to issue</a>
         </div>

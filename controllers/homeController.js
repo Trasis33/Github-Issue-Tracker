@@ -37,14 +37,16 @@ homeController.index = async (req, res, next) => {
     title: issue.title,
     state: issue.state,
     comments: issue.comments,
-    created_at: issue.created_at,
-    updated_at: issue.updated_at,
+    created_at: issue.created_at.substring(0, 10),
+    time: issue.created_at.substring(11, 16),
+    updated_at: issue.updated_at.substring(0, 10),
+    update_time: issue.updated_at.substring(11, 16),
     closed_at: issue.closed_at,
     body: issue.body,
     url: issue.html_url
   }))
 
-  console.log(issues)
+  // console.log(issues)
   // console.log(await result.json())
   // return result
   res.render('home/index', { issues })

@@ -10,38 +10,47 @@ socket.on('newComment', issue => {
 })
 
 socket.on('newIssue', issue => {
-  console.log(issue)
+  // console.log(issue)
   console.log('new issue added')
   let issueContainer = document.querySelector('.issue-container')
   let issues = document.querySelector('.issues')
   let issueClone = document.importNode(issues, true)
+  let card = issueClone.querySelector('.card')
   let id = issueClone.querySelector('.issue-id')
   let title = issueClone.querySelector('.issue-title')
   let body = issueClone.querySelector('.issue-body')
-  let state = issueClone.querySelector('.issue-state')
+  let createdAt = issueClone.querySelector('.created-at')
+  let updatedAt = issueClone.querySelector('.updated-at')
   let comments = issueClone.querySelector('.issue-comments')
   let url = issueClone.querySelector('.issue-url')
+
+  // console.log(card)
+
+  card.classList.remove('blue-grey', 'darken-1')
+  card.classList.add('green', 'lighten-1')
 
   id.setAttribute('id', `issue-${issue.id}`)
   title.textContent = issue.title
   body.textContent = issue.body
-  state.textContent = `Issue state: ${issue.state}`
+  createdAt.textContent = `Created at: ${issue.created_at} Time: ${issue.time}`
+  updatedAt.textContent = `Updated at: ${issue.updated_at}, ${issue.update_time}`
   comments.textContent = `Comments: ${issue.comments}`
   url.setAttribute('href', issue.url)
 
   issueContainer.insertBefore(issueClone, issues)
 
-  console.log(issueClone)
+  // console.log(issueClone)
 })
 
 socket.on('closedIssue', issue => {
   let issueContainer = document.querySelector('.issue-container')
   let id = document.querySelector(`#issue-${issue.id}`)
-  // id.parentNode.parentNode.parentNode.removeChild()
   issueContainer.removeChild(id.parentNode.parentNode)
 })
 
 socket.on('newTitle', issue => {
   let title = document.querySelector(`#issue-${issue.id} .issue-title`)
+  let updatedAt = document.querySelector('.updated')
+  updatedAt.classList.add('new', 'blue')
   title.textContent = issue.title
 })

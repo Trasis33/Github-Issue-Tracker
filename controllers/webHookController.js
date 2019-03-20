@@ -1,9 +1,7 @@
 'use strict'
 
 const webHookController = {}
-/**
- * index GET
- */
+
 webHookController.index = (req, res, next) => res.render('home/index')
 
 webHookController.webhook = async (req, res, next) => {

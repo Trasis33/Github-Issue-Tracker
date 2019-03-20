@@ -20,7 +20,7 @@ socket.on('newIssue', issue => {
   let title = issueClone.querySelector('.issue-title')
   let body = issueClone.querySelector('.issue-body')
   let createdAt = issueClone.querySelector('.created-at')
-  let updatedAt = issueClone.querySelector('.updated-at')
+  let updatedAt = issueClone.querySelector('.updated')
   let comments = issueClone.querySelector('.issue-comments')
   let url = issueClone.querySelector('.issue-url')
 
@@ -32,7 +32,7 @@ socket.on('newIssue', issue => {
   id.setAttribute('id', `issue-${issue.id}`)
   title.textContent = issue.title
   body.textContent = issue.body
-  createdAt.textContent = `Created at: ${issue.created_at} Time: ${issue.time}`
+  createdAt.textContent = `Created at: ${issue.created_at}, ${issue.time}`
   updatedAt.textContent = `Updated at: ${issue.updated_at}, ${issue.update_time}`
   comments.textContent = `Comments: ${issue.comments}`
   url.setAttribute('href', issue.url)

@@ -21,7 +21,8 @@ webHookController.webhook = async (req, res, next) => {
     comments: result.issue.comments,
     created_at: result.issue.created_at.substring(0, 10),
     time: result.issue.created_at.substring(11, 16),
-    updated_at: result.issue.updated_at,
+    updated_at: result.issue.updated_at.substring(0, 10),
+    update_time: result.issue.updated_at.substring(11, 16),
     closed_at: result.issue.closed_at,
     body: result.issue.body,
     url: result.html_url

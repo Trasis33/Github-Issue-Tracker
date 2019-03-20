@@ -4,8 +4,19 @@ const hbs = require('express-hbs')
 const path = require('path')
 const logger = require('morgan')
 const bodyParser = require('body-parser')
+const helmet = require('helmet')
 
 const app = express()
+
+app.use(helmet())
+
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    styleSrc: ["'self'", "'unsafe-inline'", 'cdnjs.cloudflare.com'],
+    scriptSrc: ["'self'", 'cdnjs.cloudflare.com']
+  }
+}))
 
 const server = require('http').createServer(app)
 server.listen(3000, () => console.log('server running on port 3000'))

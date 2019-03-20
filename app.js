@@ -31,16 +31,5 @@ app.use(bodyParser.raw({
   type: 'application/json'
 }))
 
-// app.use(handler.on('issues', function (event) {
-//   console.log('Received an issue event for %s action=%s: #%d %s',
-//     event.payload.repository.name,
-//     event.payload.action,
-//     event.payload.issue.number,
-//     event.payload.issue.title)
-// }))
-
-// routes
 app.use('/', require('./routes/homeRouter'))
 app.use('/webhook', require('./routes/webHookRouter'))
-
-// app.listen(3000, () => console.log('Server running at http://localhost:3000/'))

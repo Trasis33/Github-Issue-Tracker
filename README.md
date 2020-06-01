@@ -1,4 +1,4 @@
-# URL to application: https://cscloud21.lnu.se
+# URL to application:
 
 För att göra applikationen säker har jag använt mig av helmet som middleware. Den hjälper till att skydda mot:
 

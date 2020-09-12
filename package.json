@@ -27,7 +27,7 @@
     "github-webhook-handler": "^0.7.1",
     "helmet": "^3.16.0",
     "morgan": "^1.9.1",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.1",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
